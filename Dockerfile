@@ -17,6 +17,7 @@ WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY rosewood/ .
+COPY seed-admin.ts seed-heavy.ts ./docker/
 
 ENV NEXT_TELEMETRY_DISABLED=1
 # Provide a dummy DATABASE_URL so sequelize.ts doesn't warn during build.
