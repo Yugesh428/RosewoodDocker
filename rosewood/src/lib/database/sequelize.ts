@@ -24,6 +24,8 @@ const sequelize = new Sequelize(
       acquire: 30000,
       idle: 10000,
     },
+    // Force IPv4 to avoid IPv6 connection issues on Render
+    dialectModule: require('pg'),
   }
 );
 

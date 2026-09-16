@@ -8,6 +8,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/login",   // default sign-in page (customer)
     error:  "/login",   // auth errors go here too
   },
+  trustHost: true, // Trust all hosts (required for Render deployment)
   providers: [
     Credentials({
       credentials: {
@@ -27,6 +28,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             connectionString: process.env.DATABASE_URL,
             ssl: { rejectUnauthorized: false },
             max: 2,
+            // Force IPv4
+            host: process.env.DATABASE_URL?.match(/\/\/[^:]+:([^@]+)@([^:]+)/)?.[2],
           });
 
           const email = (credentials.email as string).toLowerCase().trim();
