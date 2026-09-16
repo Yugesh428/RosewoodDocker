@@ -1,0 +1,20 @@
+# Exclude documentation files
+*.md
+DEPLOYMENT-SUMMARY.md
+DOCKER-QUICKSTART.md
+QUICK-INSTALL.md
+README.md
+SETUP.md
+
+# Exclude shell scripts (not needed for Railway)
+*.sh
+*.bat
+create-seed-dump.bat
+create-seed-dump.sh
+
+# Exclude other Dockerfiles (we only need the main one)
+Dockerfile.postgres
+Dockerfile.preseeded
+
+# Exclude regular docker-compose (we only need production)
+docker-compose.yml

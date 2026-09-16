@@ -1,0 +1,7 @@
+# Applied when building from the rosewood/ context
+node_modules
+.next
+.git
+.env
+*.log
+public/uploads

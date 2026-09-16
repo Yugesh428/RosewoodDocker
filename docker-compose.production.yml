@@ -1,0 +1,62 @@
+services:
+
+  # ── PostgreSQL ───────────────────────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    container_name: rosewood_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       rosewood
+      POSTGRES_USER:     rosewood_user
+      POSTGRES_PASSWORD: rosewood_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - rosewood_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rosewood_user -d rosewood"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Next.js App (Pre-built image from Docker Hub) ────────────────────────────
+  app:
+    image: yugeshbastola/rosewood-pharmacy:latest
+    container_name: rosewood_app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://rosewood_user:rosewood_pass@db:5432/rosewood?sslmode=disable
+      NODE_ENV: production
+      NEXTAUTH_SECRET: change-this-secret-in-production
+      AUTH_SECRET: change-this-secret-in-production
+      NEXTAUTH_URL: http://localhost:3000
+      STORAGE_PROVIDER: local
+    ports:
+      - "3000:3000"
+    volumes:
+      - rosewood_uploads:/app/public/uploads
+
+  # ── Seed Job (Pre-built image, runs once) ────────────────────────────────────
+  seed:
+    image: yugeshbastola/rosewood-pharmacy:latest
+    container_name: rosewood_seed
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://rosewood_user:rosewood_pass@db:5432/rosewood?sslmode=disable
+      NODE_ENV: production
+      SEED_ADMIN_NAME:     "Rosewood Admin"
+      SEED_ADMIN_EMAIL:    "admin@rosewood.com"
+      SEED_ADMIN_PASSWORD: "Admin@1234"
+    command: npx tsx --tsconfig tsconfig.scripts.json docker/seed-heavy.ts
+
+volumes:
+  rosewood_pgdata:
+    driver: local
+  rosewood_uploads:
+    driver: local
