@@ -1,13 +1,14 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # Rosewood Pharmacy — Dockerfile
 # Multi-stage: deps → builder → runner
+# This Dockerfile expects rosewood source files in the rosewood/ subdirectory
 # ──────────────────────────────────────────────────────────────────────────────
 
 # ── Stage 1: install dependencies ────────────────────────────────────────────
 FROM node:20-alpine AS deps
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY rosewood/package.json rosewood/package-lock.json ./
 RUN npm ci --ignore-scripts
 
 # ── Stage 2: build Next.js ────────────────────────────────────────────────────
@@ -15,7 +16,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY rosewood/ .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 # Provide a dummy DATABASE_URL so sequelize.ts doesn't warn during build.

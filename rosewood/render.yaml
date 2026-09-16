@@ -1,0 +1,36 @@
+services:
+  # Next.js Web Service (Pre-built Docker Image)
+  - type: web
+    name: rosewood-app
+    env: docker
+    plan: free
+    region: oregon
+    image:
+      url: docker.io/yugeshbastola/rosewood-pharmacy:latest
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://postgres:Yugesh%40123%23@db.clgkjnmvumjxxervqtxr.supabase.co:5432/postgres
+      - key: NODE_ENV
+        value: production
+      - key: NEXTAUTH_SECRET
+        generateValue: true
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: NEXTAUTH_URL
+        value: https://rosewood-app.onrender.com
+      - key: STORAGE_PROVIDER
+        value: local
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_USER
+        value: bastolayugesh2@gmail.com
+      - key: SMTP_PASS
+        value: cgtgnenkkmfzpiix
+      - key: SMTP_FROM
+        value: Rosewood Pharmacy <bastolayugesh2@gmail.com>
+      - key: NODEMAILER_GMAIL
+        value: bastolayugesh2@gmail.com
+      - key: NODEMAILER_GMAIL_APP_PASSWORD
+        value: cgtgnenkkmfzpiix

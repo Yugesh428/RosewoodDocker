@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* ── Fonts ── */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-heading);
+
+  /* ── Apothecary palette mapped to shadcn tokens ── */
+  --color-background:         var(--background);
+  --color-foreground:         var(--foreground);
+  --color-card:               var(--card);
+  --color-card-foreground:    var(--card-foreground);
+  --color-popover:            var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary:            var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary:          var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:              var(--muted);
+  --color-muted-foreground:   var(--muted-foreground);
+  --color-accent:             var(--accent);
+  --color-accent-foreground:  var(--accent-foreground);
+  --color-destructive:        var(--destructive);
+  --color-border:             var(--border);
+  --color-input:              var(--input);
+  --color-ring:               var(--ring);
+  --color-gold:               var(--gold);
+
+  /* ── Radius ── */
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* ── Site-wide theme CSS variables ── */
+:root {
+  --color-primary:       #D4AF37;
+  --color-primary-light: #ffe87c;
+  --color-primary-dark:  #b8952e;
+  --color-primary-text:  #000000;
+  --color-bg-page:       #dff0fb;
+  --color-bg-gradient:   linear-gradient(160deg, #dff0fb 0%, #eaf6ff 35%, #f4f9fc 65%, #edf5fb 100%);
+  --color-bg-card:       #ffffff;
+  --color-bg-nav:        #000000;
+  --color-text-heading:  #1A1A1A;
+  --color-text-body:     #374151;
+  --color-text-muted:    #6B6B6B;
+  --color-border:        #E8E4DC;
+}
+
+[data-theme="medical"] {
+  --color-primary:       #00B4D8;
+  --color-primary-light: #90E0EF;
+  --color-primary-dark:  #0096C7;
+  --color-primary-text:  #ffffff;
+  --color-bg-page:       #dff0fb;
+  --color-bg-gradient:   linear-gradient(135deg, #dff0fb 0%, #eaf6ff 40%, #dff0fb 100%);
+  --color-bg-card:       #ffffff;
+  --color-bg-nav:        #023E8A;
+  --color-text-heading:  #023E8A;
+  --color-text-body:     #1a4a6b;
+  --color-text-muted:    #4a7a96;
+  --color-border:        #CAE9F5;
+  --accent:              #00B4D8;
+  --accent-foreground:   #ffffff;
+  --ring:                #00B4D8;
+  --background:          #dff0fb;
+  --foreground:          #023E8A;
+  --primary:             #023E8A;
+  --primary-foreground:  #ffffff;
+}
+
+[data-theme="gold"] {
+  --color-primary:       #D4AF37;
+  --color-primary-light: #ffe87c;
+  --color-primary-dark:  #b8952e;
+  --color-primary-text:  #000000;
+  --color-bg-page:       #dff0fb;
+  --color-bg-gradient:   linear-gradient(135deg, #dff0fb 0%, #eaf6ff 50%, #dff0fb 100%);
+  --color-bg-card:       #ffffff;
+  --color-bg-nav:        #000000;
+  --color-text-heading:  #1A1A1A;
+  --color-text-body:     #374151;
+  --color-text-muted:    #6B6B6B;
+  --color-border:        #E8E4DC;
+}
+
+.t-primary    { color:            var(--color-primary) }
+.t-bg-primary { background-color: var(--color-primary) }
+.t-border     { border-color:     var(--color-border)  }
+
+/* ── Light theme ── */
+:root {
+  --background:           #dff0fb;
+  --foreground:           #1A1A1A;
+  --card:                 #FFFFFF;
+  --card-foreground:      #1A1A1A;
+  --popover:              #FFFFFF;
+  --popover-foreground:   #1A1A1A;
+  --primary:              #000000;
+  --primary-foreground:   #FFFFFF;
+  --secondary:            #F4F4F4;
+  --secondary-foreground: #1A1A1A;
+  --muted:                #F0F0F0;
+  --muted-foreground:     #6B6B6B;
+  --accent:               #D4AF37;
+  --accent-foreground:    #000000;
+  --destructive:          oklch(0.577 0.245 27.325);
+  --border:               #E5E5E5;
+  --input:                #E5E5E5;
+  --ring:                 #D4AF37;
+  --gold:                 #D4AF37;
+  --radius:               0.5rem;
+}
+
+/* ── Dark theme ── */
+.dark {
+  --background:           #111111;
+  --foreground:           #F9F9F9;
+  --card:                 #1A1A1A;
+  --card-foreground:      #F9F9F9;
+  --popover:              #1A1A1A;
+  --popover-foreground:   #F9F9F9;
+  --primary:              #F9F9F9;
+  --primary-foreground:   #111111;
+  --secondary:            #2A2A2A;
+  --secondary-foreground: #F9F9F9;
+  --muted:                #2A2A2A;
+  --muted-foreground:     #999999;
+  --accent:               #D4AF37;
+  --accent-foreground:    #000000;
+  --destructive:          oklch(0.704 0.191 22.216);
+  --border:               rgba(255,255,255,0.1);
+  --input:                rgba(255,255,255,0.12);
+  --ring:                 #D4AF37;
+  --gold:                 #D4AF37;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html, html[data-theme] {
+    background-color: #dff0fb !important;
+    background-image: none !important;
+    min-height: 100%;
+  }
+  body {
+    @apply text-foreground;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    background: transparent !important;
+    background-color: transparent !important;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), Georgia, serif;
+  }
+}
+
+/* ── Category sidebar animation ── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}

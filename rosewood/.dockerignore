@@ -1,0 +1,24 @@
+# ── Never send these to Docker build context ──────────────────────────────────
+node_modules
+.next
+.git
+*.log
+npm-debug.log*
+
+# Uploaded files (mounted as volume instead)
+public/uploads
+
+# Local env (injected via env_file in compose)
+.env
+.env.local
+.env.*.local
+
+# Dev tools
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

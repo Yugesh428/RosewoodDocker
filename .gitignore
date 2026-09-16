@@ -1,12 +1,12 @@
-# Exclude documentation files
+# Exclude documentation files (except main README)
 *.md
+!README.md
 DEPLOYMENT-SUMMARY.md
 DOCKER-QUICKSTART.md
 QUICK-INSTALL.md
-README.md
 SETUP.md
 
-# Exclude shell scripts (not needed for Railway)
+# Exclude shell scripts
 *.sh
 *.bat
 create-seed-dump.bat
@@ -18,3 +18,16 @@ Dockerfile.preseeded
 
 # Exclude regular docker-compose (we only need production)
 docker-compose.yml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# NOTE: rosewood/ folder SHOULD be committed for Render deployment
