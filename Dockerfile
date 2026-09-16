@@ -20,6 +20,7 @@ COPY rosewood/ .
 COPY seed-admin.ts seed-heavy.ts ./docker/
 
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_OPTIONS="--dns-result-order=ipv4first"
 # Provide a dummy DATABASE_URL so sequelize.ts doesn't warn during build.
 # It is never actually connected to — Next.js only statically analyzes routes.
 ENV DATABASE_URL=postgres://build:build@localhost:5432/build
@@ -55,5 +56,6 @@ USER nextjs
 EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
+ENV NODE_OPTIONS="--dns-result-order=ipv4first"
 
 CMD ["node", "server.js"]
