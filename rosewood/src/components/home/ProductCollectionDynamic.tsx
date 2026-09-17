@@ -232,7 +232,7 @@ export default function ProductCollectionDynamic() {
                   </h3>
                   <Link
                     href="/pharmacy"
-                    className="inline-flex items-center gap-1.5 text-xs font-sans text-white border border-white/50 px-4 py-2 hover:bg-white hover:text-black transition-all duration-200"
+                    className="inline-flex items-center gap-1.5 text-xs font-sans text-white border border-white/50 px-4 py-2 rounded-md hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-white transition-all duration-200"
                   >
                     Shop Category
                   </Link>

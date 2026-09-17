@@ -313,7 +313,7 @@ export default function PharmacyClient({ categories, products }: PharmacyClientP
     <div className="min-h-screen bg-[#F9F9F9]" style={{ paddingTop: '80px' }}>
 
       {/* Hero Header Section - Full Width */}
-      <div className="relative bg-gradient-to-r from-[#2d6a4f] to-[#52b788] py-12 mb-8 overflow-hidden w-screen -mx-[100vw] left-1/2 right-1/2 ml-[calc(-50vw)] mr-[calc(-50vw)]">
+      <div className="relative bg-gradient-to-r from-[#40916c] to-[#74c69d] py-12 mb-8 overflow-hidden w-screen -mx-[100vw] left-1/2 right-1/2 ml-[calc(-50vw)] mr-[calc(-50vw)]">
         {/* Background pattern overlay */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{

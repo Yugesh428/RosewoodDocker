@@ -67,7 +67,7 @@ export default function ContactPage() {
               <motion.div
                 variants={fadeUp} initial="hidden" whileInView="visible"
                 viewport={{ once: true }} custom={0}
-                className="bg-white border border-[#E5E5E5] rounded-sm p-8 md:p-10"
+                className="bg-white border border-[#E5E5E5] rounded-2xl p-8 md:p-10"
               >
                 <h2 className="font-heading text-2xl text-[#1A1A1A] mb-7">
                   Send a Message
@@ -106,7 +106,7 @@ export default function ContactPage() {
                           onChange={handleChange}
                           placeholder="Jane Doe"
                           required
-                          className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-sm placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200"
+                          className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-xl placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200"
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
@@ -120,7 +120,7 @@ export default function ContactPage() {
                           onChange={handleChange}
                           placeholder="jane@example.com"
                           required
-                          className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-sm placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200"
+                          className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-xl placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200"
                         />
                       </div>
                     </div>
@@ -136,7 +136,7 @@ export default function ContactPage() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+1 (555) 000-0000"
-                        className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-sm placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200"
+                        className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-xl placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200"
                       />
                     </div>
 
@@ -152,7 +152,7 @@ export default function ContactPage() {
                         placeholder="How can we help you today?"
                         required
                         rows={5}
-                        className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-sm placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200 resize-y"
+                        className="border border-[#E5E5E5] bg-[#F9F9F9] text-sm text-[#1A1A1A] font-sans px-4 py-2.5 rounded-xl placeholder:text-[#ABABAB] focus:outline-none focus:border-[#D4AF37] transition-colors duration-200 resize-y"
                       />
                     </div>
 
@@ -168,7 +168,7 @@ export default function ContactPage() {
                       type="submit"
                       disabled={status === "sending"}
                       onClick={() => status === "error" && setStatus("idle")}
-                      className="mt-2 w-full bg-[#1A1A1A] text-white text-xs font-sans tracking-widest uppercase py-3.5 hover:bg-[#D4AF37] hover:text-black transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="mt-2 w-full bg-[#D4AF37] text-black text-xs font-sans tracking-widest uppercase py-3.5 rounded-xl hover:bg-[#b8952e] hover:text-white transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
                       {status === "sending" ? "Sending…" : "Send Message"}
                     </button>

@@ -36,7 +36,7 @@ export default function AboutHeaderDynamic() {
   const defaultDescription = "Elevating the pharmacy experience through meticulous curation, expert care, and an unwavering commitment to your holistic well-being.";
 
   return (
-    <section className="py-20 text-center relative overflow-hidden bg-gradient-to-r from-[#2d6a4f] to-[#52b788]">
+    <section className="py-10 text-center relative overflow-hidden bg-gradient-to-r from-[#40916c] to-[#74c69d]">
       {/* Background pattern overlay */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute inset-0" style={{

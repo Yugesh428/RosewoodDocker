@@ -1,7 +1,17 @@
-# Applied when building from the rosewood/ context
+# Root-level ignores
 node_modules
 .next
 .git
 .env
 *.log
 public/uploads
+
+# rosewood subdirectory ignores (build context is the docker/ folder)
+rosewood/node_modules
+rosewood/.next
+rosewood/.git
+rosewood/.env
+rosewood/public/uploads
+rosewood/*.log
+rosewood/.vscode
+rosewood/tsconfig.tsbuildinfo

@@ -8,7 +8,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/login",   // default sign-in page (customer)
     error:  "/login",   // auth errors go here too
   },
-  trustHost: true, // Trust all hosts (required for Render deployment)
   providers: [
     Credentials({
       credentials: {
@@ -23,32 +22,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
           const bcrypt = require("bcryptjs") as typeof import("bcryptjs");
           const { Pool } = require("pg") as typeof import("pg");
-          const { URL } = require("url");
 
-          // Parse DATABASE_URL to force IPv4 connection
-          let poolConfig: any = {
+          const pool = new Pool({
+            connectionString: process.env.DATABASE_URL,
             ssl: { rejectUnauthorized: false },
             max: 2,
-          };
-
-          if (process.env.DATABASE_URL) {
-            try {
-              const parsedUrl = new URL(process.env.DATABASE_URL);
-              poolConfig = {
-                host: parsedUrl.hostname,
-                port: parseInt(parsedUrl.port) || 5432,
-                user: parsedUrl.username,
-                password: decodeURIComponent(parsedUrl.password),
-                database: parsedUrl.pathname.slice(1),
-                ssl: { rejectUnauthorized: false },
-                max: 2,
-              };
-            } catch {
-              poolConfig.connectionString = process.env.DATABASE_URL;
-            }
-          }
-
-          const pool = new Pool(poolConfig);
+          });
 
           const email = (credentials.email as string).toLowerCase().trim();
           const expectedRole = (credentials.expectedRole as string) ?? "CUSTOMER";

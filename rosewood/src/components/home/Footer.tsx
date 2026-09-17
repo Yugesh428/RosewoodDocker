@@ -1,13 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import { useTheme } from "@/context/ThemeContext";
 
 const legal   = ["Privacy Policy", "Terms of Service", "Cookie Policy"];
 const support = ["FAQ", "Shipping", "Returns", "Contact Us"];
 
 export default function Footer() {
+  const { theme } = useTheme();
+
   return (
-    <footer className="w-full border-t border-white/10" style={{ backgroundColor: "#000000" }}>
+    <footer
+      className="w-full border-t border-white/10"
+      style={{ backgroundColor: theme?.bgNav ?? "#000000" }}
+    >
       {/* Accent line */}
       <div className="h-[2px]"
         style={{ background: "linear-gradient(90deg, transparent, var(--color-primary), transparent)", opacity: 0.8 }} />
