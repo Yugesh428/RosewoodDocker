@@ -1,0 +1,40 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Render Environment Variables for Rosewood Pharmacy
+# Copy these into your Render dashboard under Environment settings
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Database (Supabase with IPv4 forcing)
+DATABASE_URL=postgresql://postgres:Yugesh%40123%23@db.clgkjnmvumjxxervqtxr.supabase.co:5432/postgres?sslmode=require
+
+# Node Environment
+NODE_ENV=production
+
+# NextAuth Configuration
+NEXTAUTH_URL=https://rosewooddocker.onrender.com
+NEXTAUTH_SECRET=generate-a-random-secret-here-use-openssl-rand-base64-32
+AUTH_SECRET=generate-a-random-secret-here-use-openssl-rand-base64-32
+
+# Storage
+STORAGE_PROVIDER=local
+
+# Email Configuration (Gmail)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=bastolayugesh2@gmail.com
+SMTP_PASS=cgtgnenkkmfzpiix
+SMTP_FROM=Rosewood Pharmacy <bastolayugesh2@gmail.com>
+NODEMAILER_GMAIL=bastolayugesh2@gmail.com
+NODEMAILER_GMAIL_APP_PASSWORD=cgtgnenkkmfzpiix
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IMPORTANT NOTES:
+# ──────────────────────────────────────────────────────────────────────────────
+# 1. Generate NEXTAUTH_SECRET and AUTH_SECRET using: openssl rand -base64 32
+#    Or use: https://generate-secret.vercel.app/32
+# 
+# 2. Make sure to add ?sslmode=require to DATABASE_URL for Supabase
+#
+# 3. After adding these variables in Render, the service will automatically redeploy
+#
+# 4. Once deployed, run the seed script to populate your database
+# ──────────────────────────────────────────────────────────────────────────────

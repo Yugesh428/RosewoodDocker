@@ -22,31 +22,22 @@
  */
 
 import bcrypt from "bcryptjs";
-import sequelize from "./src/lib/database/sequelize";
-import User from "./src/lib/models/userModel";
-import { CustomTheme, default as SiteTheme } from "./src/features/siteTheme/siteThemeModel";
-import HeroSlide from "./src/features/Ui/HeroSection/heroModel/heroModel";
-import CollectionCategory, { CollectionItem } from "./src/features/Ui/ourProductCollection/ourProductCollectionCategoryModel";
-import Product from "./src/features/Ui/ourProductCollection/ourProductContent/ourProductModel";
-import Testimonial from "./src/features/Ui/testimonials/testimonialsModel";
-import OurStory from "./src/features/Ui/AboutUsPage/ourStory/ourStroyModel";
-import Mission from "./src/features/Ui/AboutUsPage/ourMisson/missionModel";
-import Value from "./src/features/Ui/AboutUsPage/ourValues/ourValuesModel";
-import ContactInfo from "./src/features/Ui/contact/contactInfo/contactInfoModel";
-import Order from "./src/features/orders/orderModel";
-import Category from "./src/features/productCategory/productCatetgoryModel";
-import PharmacyProduct from "./src/features/products/productModel";
-import ProductIngredient from "./src/features/products/productIngredientModel";
-import Review from "./src/features/reviews/reviewModel";
-// Import additional models to ensure they're synced
-import Inventory from "./src/features/inventory/inventoryModel";
-import OrderItem from "./src/features/orderItems/orderItemModel";
-import Staff from "./src/features/staff/staffModel";
-import Wishlist from "./src/features/wishlist/wishlistModel";
-import Feedback from "./src/features/feedback/feedbackModel";
-import GuestCart from "./src/features/guestCart/guestCartModel";
-import AboutUsTitle from "./src/features/Ui/AboutUsPage/AboutUs Head/aboutUsTitleModel";
-import ContactForm from "./src/features/Ui/contact/contactForm/contactFormModel";
+import sequelize from "../src/lib/database/sequelize";
+import User from "../src/lib/models/userModel";
+import { CustomTheme, default as SiteTheme } from "../src/features/siteTheme/siteThemeModel";
+import HeroSlide from "../src/features/Ui/HeroSection/heroModel/heroModel";
+import CollectionCategory, { CollectionItem } from "../src/features/Ui/ourProductCollection/ourProductCollectionCategoryModel";
+import Product from "../src/features/Ui/ourProductCollection/ourProductContent/ourProductModel";
+import Testimonial from "../src/features/Ui/testimonials/testimonialsModel";
+import OurStory from "../src/features/Ui/AboutUsPage/ourStory/ourStroyModel";
+import Mission from "../src/features/Ui/AboutUsPage/ourMisson/missionModel";
+import Value from "../src/features/Ui/AboutUsPage/ourValues/ourValuesModel";
+import ContactInfo from "../src/features/Ui/contact/contactInfo/contactInfoModel";
+import Order from "../src/features/orders/orderModel";
+import Category from "../src/features/productCategory/productCatetgoryModel";
+import PharmacyProduct from "../src/features/products/productModel";
+import ProductIngredient from "../src/features/products/productIngredientModel";
+import Review from "../src/features/reviews/reviewModel";
 
 // ── Credentials ───────────────────────────────────────────────────────────────
 const ADMIN_NAME     = process.env.SEED_ADMIN_NAME     || "Rosewood Admin";
@@ -64,39 +55,9 @@ async function main() {
   await sequelize.authenticate();
   log("Database connected.");
 
-  // 2. Sync tables in dependency order (create all tables if they don't exist)
-  const OPTS = { force: true };
-  
-  // Parent tables first
-  await User.sync(OPTS);
-  await Staff.sync(OPTS);
-  await Category.sync(OPTS);
-  await CustomTheme.sync(OPTS);
-  await SiteTheme.sync(OPTS);
-  await CollectionCategory.sync(OPTS);
-  
-  // Child tables with FK dependencies
-  await PharmacyProduct.sync(OPTS);
-  await ProductIngredient.sync(OPTS);
-  await Inventory.sync(OPTS);
-  await Review.sync(OPTS);
-  await Wishlist.sync(OPTS);
-  await Order.sync(OPTS);
-  await OrderItem.sync(OPTS);
-  await Feedback.sync(OPTS);
-  await GuestCart.sync(OPTS);
-  await HeroSlide.sync(OPTS);
-  await CollectionItem.sync(OPTS);
-  await Product.sync(OPTS);
-  await Testimonial.sync(OPTS);
-  await AboutUsTitle.sync(OPTS);
-  await OurStory.sync(OPTS);
-  await Mission.sync(OPTS);
-  await Value.sync(OPTS);
-  await ContactInfo.sync(OPTS);
-  await ContactForm.sync(OPTS);
-  
-  log("All tables created fresh.");
+  // 2. Sync tables (non-destructive)
+  await sequelize.sync({ force: false, alter: false });
+  log("Tables synced.");
 
   // ══════════════════════════════════════════════════════════════════════════
   // USERS
