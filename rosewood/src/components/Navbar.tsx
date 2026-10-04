@@ -459,10 +459,7 @@ export default function Navbar() {
               <div className="flex flex-col items-center leading-tight">
                 <span className="font-heading text-xl tracking-[0.12em] uppercase"
                   style={{ color: "var(--color-primary)" }}>
-                  Rosewood
-                </span>
-                <span className="font-sans text-[10px] tracking-[0.35em] uppercase text-white mt-0.5">
-                  Pharmacy
+                  Pharmacy Nepal
                 </span>
               </div>
             </Link>

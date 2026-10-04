@@ -27,11 +27,8 @@ export default function Footer() {
                 className="font-heading text-3xl tracking-[0.12em] uppercase"
                 style={{ color: "var(--color-primary)", textShadow: "0 0 18px rgba(212,175,55,0.3)" }}
               >
-                Rosewood
+                Pharmacy Nepal
               </h3>
-              <p className="text-[10px] tracking-[0.35em] uppercase font-sans text-white mt-0.5">
-                Pharmacy
-              </p>
             </div>
             <p
               className="text-xs font-sans leading-relaxed max-w-xs"
@@ -95,7 +92,7 @@ export default function Footer() {
             className="text-[10px] font-sans tracking-wide"
             style={{ color: "rgba(255,255,255,0.45)", textShadow: "0 0 8px rgba(255,255,255,0.15)" }}
           >
-            © {new Date().getFullYear()} Rosewood Pharmacy. All rights reserved.
+            © {new Date().getFullYear()} Pharmacy Nepal. All rights reserved.
           </p>
           <p
             className="text-[10px] font-sans tracking-wide"
