@@ -17,9 +17,11 @@ export async function getAboutUs(req: NextRequest): Promise<NextResponse> {
     // There should be only one record; we'll fetch the first one
     let about = await AboutUs.findOne();
 
-    // If none exists, create a default empty one (so frontend never gets 404)
+    // If none exists, create a default placeholder (so frontend never gets 404)
     if (!about) {
-      about = await AboutUs.create({ description: "" });
+      about = await AboutUs.create({ 
+        description: "Welcome to Pharmacy Nepal. We are dedicated to providing quality healthcare products and services." 
+      });
       logger.info(CTX, "getAboutUs — created default entry");
     }
 
