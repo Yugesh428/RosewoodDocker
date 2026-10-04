@@ -5,7 +5,7 @@ import SiteContentClient from "./_components/SiteContentClient";
 export default async function SiteContentPage() {
   const session = await auth();
   if (!session || (session.user as { role?: string })?.role !== "ADMIN") {
-    redirect("/admin/login");
+    redirect("/secure-admin-access-2024");
   }
 
   return (

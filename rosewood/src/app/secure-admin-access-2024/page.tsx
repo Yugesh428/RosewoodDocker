@@ -1,28 +1,30 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 
-export default function AdminLoginPage() {
-  const router = useRouter();
-  
-  useEffect(() => {
-    // Redirect to the new secure admin URL
-    router.replace("/secure-admin-access-2024");
-  }, [router]);
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#111111]">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D4AF37] mx-auto mb-4"></div>
-        <p className="text-white/50 text-sm">Redirecting...</p>
-      </div>
-    </div>
+function EyeIcon({ open }: { open: boolean }) {
+  return open ? (
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  ) : (
+    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
+      <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
+      <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
+      <line x1="2" x2="22" y1="2" y2="22" />
+    </svg>
   );
 }
 
-// Legacy component kept for backwards compatibility
-function LegacyAdminLoginPage() {
+export default function SecureAdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -70,7 +72,7 @@ function LegacyAdminLoginPage() {
           className="text-center mb-8"
         >
           <p className="text-xs tracking-[0.35em] uppercase text-[#D4AF37] font-sans mb-1">
-            Rosewood
+            Pharmacy Nepal
           </p>
           <h1 className="font-heading text-3xl text-white">Admin Portal</h1>
           <p className="text-sm text-[#999999] mt-1 font-sans">Restricted access</p>
@@ -110,7 +112,7 @@ function LegacyAdminLoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@rosewood.com"
+                placeholder="admin@pharmacynepal.com"
                 disabled={loading}
                 className="bg-[#111111] border-white/10 text-white placeholder:text-white/20 focus-visible:ring-[#D4AF37] focus-visible:border-[#D4AF37]"
               />
@@ -175,7 +177,7 @@ function LegacyAdminLoginPage() {
         </motion.div>
 
         <p className="text-center text-xs text-white/20 mt-6 font-sans tracking-wide">
-          ROSEWOOD © {new Date().getFullYear()}
+          PHARMACY NEPAL © {new Date().getFullYear()}
         </p>
       </motion.div>
     </div>

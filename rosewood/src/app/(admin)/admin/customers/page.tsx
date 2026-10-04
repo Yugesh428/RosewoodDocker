@@ -5,7 +5,7 @@ import CustomersSection from "@/components/admin/customers/CustomersSection";
 export default async function CustomersPage() {
   const session = await auth();
   if (!session || !["ADMIN", "SUPERADMIN"].includes((session.user as { role: string }).role)) {
-    redirect("/admin/login");
+    redirect("/secure-admin-access-2024");
   }
   return <CustomersSection />;
 }

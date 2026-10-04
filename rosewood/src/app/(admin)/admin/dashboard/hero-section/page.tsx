@@ -7,7 +7,7 @@ import { ImageIcon } from "lucide-react";
 export default async function HeroSectionPage() {
   const session = await auth();
   if (!session || (session.user as { role?: string })?.role !== "ADMIN") {
-    redirect("/admin/login");
+    redirect("/secure-admin-access-2024");
   }
 
   return (

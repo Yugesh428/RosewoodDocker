@@ -13,7 +13,7 @@ export default function SettingsPage() {
     if (status === "loading") return;
     
     if (!session?.user) {
-      router.push("/admin/login");
+      router.push("/secure-admin-access-2024");
       return;
     }
 
