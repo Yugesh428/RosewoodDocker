@@ -397,7 +397,7 @@ function AccountDropdown() {
                 </Link>
                 <div className="mx-4 my-1 border-t border-white/10" />
                 <Link href="/track-order" onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-2.5 text-xs transition-colors font-sans"
+                  className="flex items-center gap-3 px-4 py-2.5 mb-1 text-xs transition-colors font-sans"
                   style={{ color: "rgba(255,255,255,0.5)" }}
                   onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)")}
                   onMouseLeave={e => (e.currentTarget.style.backgroundColor = "")}>
@@ -405,17 +405,6 @@ function AccountDropdown() {
                     <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                   </svg>
                   Track Order (Guest)
-                </Link>
-                <div className="mx-4 my-1 border-t border-white/10" />
-                <div className="px-4 pt-2 pb-1">
-                  <p className="text-[9px] tracking-[0.25em] uppercase font-sans" style={{ color: "rgba(212,175,55,0.6)" }}>Admin</p>
-                </div>
-                <Link href="/admin/login" onClick={() => setOpen(false)}
-                  className="flex items-center gap-3 px-4 py-2.5 mb-1 text-xs font-semibold transition-colors font-sans"
-                  style={{ color: "#D4AF37" }}
-                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = "rgba(212,175,55,0.10)")}
-                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = "")}>
-                  <ShieldIcon /> Admin portal
                 </Link>
               </>
             )}
@@ -587,10 +576,6 @@ export default function Navbar() {
                   <Link href="/track-order" onClick={() => setMobileOpen(false)}
                     className="flex items-center gap-2 text-xs text-white/50 hover:text-white/80 transition-colors font-sans">
                     Track Order (Guest)
-                  </Link>
-                  <Link href="/admin/login" onClick={() => setMobileOpen(false)}
-                    className="flex items-center gap-2 text-xs text-[#FFD700] hover:text-[#FFD700] drop-shadow-[0_0_6px_rgba(255,215,0,0.5)] transition-colors font-sans">
-                    <ShieldIcon /> Admin portal
                   </Link>
                 </>
               )}
